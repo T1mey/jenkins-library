@@ -100,22 +100,23 @@ void call(Map parameters = [:]) {
         ], configuration)
 
         // JAVA
-        report(pmdParser(createToolOptions(configuration.pmd)), configuration.pmd, configuration.archive)
-        report(cpd(createToolOptions(configuration.cpd)), configuration.cpd, configuration.archive)
-        report(findBugs(createToolOptions(configuration.findbugs, [useRankAsPriority: true])), configuration.findbugs, configuration.archive)
-        report(checkStyle(createToolOptions(configuration.checkstyle)), configuration.checkstyle, configuration.archive)
+        // report(pmdParser(createToolOptions(configuration.pmd)), configuration.pmd, configuration.archive)
+        // report(cpd(createToolOptions(configuration.cpd)), configuration.cpd, configuration.archive)
+        // report(findBugs(createToolOptions(configuration.findbugs, [useRankAsPriority: true])), configuration.findbugs, configuration.archive)
+        // report(checkStyle(createToolOptions(configuration.checkstyle)), configuration.checkstyle, configuration.archive)
         // JAVA SCRIPT
-        report(esLint(createToolOptions(configuration.eslint)), configuration.eslint, configuration.archive)
+        // report(esLint(createToolOptions(configuration.eslint)), configuration.eslint, configuration.archive)
         // PYTHON
-        report(pyLint(createToolOptions(configuration.pylint)), configuration.pylint, configuration.archive)
+        // report(pyLint(createToolOptions(configuration.pylint)), configuration.pylint, configuration.archive)
         // GENERAL
+        /*
         report(taskScanner(createToolOptions(configuration.tasks, [
             includePattern: configuration.tasks.get('pattern'),
             highTags: configuration.tasks.get('high'),
             normalTags: configuration.tasks.get('normal'),
             lowTags: configuration.tasks.get('low'),
         ]).minus([pattern: configuration.tasks.get('pattern')])), configuration.tasks, configuration.archive)
-
+        */
         if (configuration.failOnError && 'FAILURE' == script.currentBuild?.result){
             script.currentBuild.result = 'FAILURE'
             error "[${STEP_NAME}] Some checks failed!"
